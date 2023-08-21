@@ -1,0 +1,68 @@
+{% extends 'base/body.html' %}
+
+{% load static%}
+
+
+{% block content %}
+<div class="container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="archivo_excel">
+        <button type="submit">Subir archivo</button>
+    </form>
+    
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio venta</th>
+                <th>IVA</th>
+                <th>Línea</th>
+                <th>IVA_VENTA</th>
+                <th>UTILIDAD</th>
+                <!-- Agregar más columnas según tus datos -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in page_obj %}
+                <tr>
+                    <td>{{ item.Código }}</td>
+                    <td>{{ item.Descripción }}</td>
+                    <td>{{ item.Cantidad}}</td>
+                    <td>{{ item.Precio_venta }}</td>
+                    <td>{{ item.IVA }}</td>
+                    <td>{{ item.Línea }}</td>
+                    <td>{{ item.IVA_VENTA }}</td>
+                    <td>{{ item.UTILIDAD }}</td>
+                  
+                    <!-- Agregar más celdas según tus datos -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+            <a href="?page=1">first</a>
+
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+        
+</div>
+{% endblock content %}
+    
