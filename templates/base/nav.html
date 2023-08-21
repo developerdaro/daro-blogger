@@ -1,0 +1,53 @@
+<style>
+    .navbar { background-color: #484848; }
+.navbar .navbar-nav .nav-link { color: #fff; }
+.navbar .navbar-nav .nav-link:hover { color: #fbc531; }
+.navbar .navbar-nav .active > .nav-link { color: #fbc531; }
+
+footer a.text-light:hover { color: #fed136!important; text-decoration: none; }
+footer .cizgi { border-right: 1px solid #535e67; }
+@media (max-width: 992px) { footer .cizgi { border-right: none; } }
+</style>
+<header>
+	<!--- Navbar --->
+	<nav class="navbar navbar-expand-lg" style="background-color:#181928;">
+		<div class="container">
+			<a class="navbar-brand text-white" href="#"><i class="fa fa-graduation-cap fa-lg mr-2"></i>DaromanX</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nvbCollapse" aria-controls="nvbCollapse">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="nvbCollapse">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item pl-1">
+						<a class="nav-link" href="#"><i class="fa fa-home fa-fw mr-1"></i>Inicio</a>
+					</li>
+					<li class="nav-item active pl-1">
+						<a class="nav-link" href="#"><i class="fa fa-th-list fa-fw mr-1"></i>Categorias</a>
+					</li>
+					<li class="nav-item pl-1">
+						<a class="nav-link" href="#"><i class="fa fa-info-circle fa-fw mr-1"></i>Peticiones</a>
+					</li>
+					<li class="nav-item pl-1">
+						<a class="nav-link" href="#"><i class="fa fa-user-plus fa-fw mr-1""></i>Seguidores</a>
+					</li>
+					{% if user.is_authenticated %}
+					<li class="nav-item pl-1">
+						<a class="nav-link" href="#"><i class="fa fa-user-plus fa-fw mr-1"></i>{{request.user.nombre}} {{request.user.apellido}}</a>
+					</li>
+					<li class="nav-item pl-1">
+						<a class="nav-link" href="{% url 'usuarios:logout' %}"><i class="fa fa-user-plus fa-fw mr-1"></i>Cerrar sesion</a>
+					</li>
+					{% else %}
+					<li class="nav-item pl-1">
+						<a class="nav-link" href="{% url 'usuarios:login' %}"><i class="fa fa-user-plus fa-fw mr-1"></i>Inicia sesion</a>
+					</li>
+					
+					{% endif %}
+					
+					
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!--# Navbar #-->
+	</header>
