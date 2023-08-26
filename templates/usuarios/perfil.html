@@ -33,16 +33,20 @@
               
               </div>
              
-              <div class="ms-3"  style="margin-top: 130px;text-align: center; float: right;">
-                <h5>{{request.user.nombre}}</h5>
-                <h5>{{request.user.apellido}}</h5>
-              </div>
-            </div>
-            <form method="post" enctype="multipart/form-data" ">
-                {% csrf_token %}
-                <input type="file" name="nueva_foto_perfil" accept="image/*">
-                <button type="submit">Subir Nueva Foto de Perfil</button>
-            </form>
+             <div style="width: 100%;  float: right;">
+                <h5 >{{request.user.nombre}} {{request.user.apellido}}</h5>
+                <h5 ></h5>
+             </div>
+                
+             </div>
+            <!-- Botón para abrir el modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cambiarAvatarModal">
+    Cambiar Imagen de Perfil
+  </button>
+  
+  <!-- Modal para cambiar la imagen de perfil -->
+  {% include 'usuarios/modal_cambiar_avatar.html' %}
+              
             
             
             <div class="p-4 text-black" style="background-color: #f8f9fa;">

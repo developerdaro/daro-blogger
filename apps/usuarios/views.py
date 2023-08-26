@@ -35,7 +35,7 @@ def perfil(request):
     usuario = request.user
 
     if request.method == 'POST' and request.FILES:
-        archivo_foto = request.FILES['nueva_foto_perfil']
+        archivo_foto = request.FILES['foto_perfil']
         
         usuario.foto_perfil = archivo_foto
         usuario.save()
